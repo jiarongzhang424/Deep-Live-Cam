@@ -1,0 +1,6 @@
+{
+  "x_query": "(Codex OR \"AI agent\" OR \"agentic coding\") -is:retweet -is:reply",
+  "github_releases": ["openai/codex", "Panniantong/Agent-Reach"],
+  "keywords": ["codex", "agent", "api", "release", "automation", "自动化", "发布"],
+  "max_items": 12
+}
