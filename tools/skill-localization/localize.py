@@ -11,6 +11,7 @@ from pathlib import Path
 
 
 LABELS = {
+    'agent-reach': ('跨平台信息读取', '通过现有工具读取 X、GitHub、YouTube 等平台'),
     'brandkit': ('品牌视觉套件', '制作品牌规范、标志系统和视觉展示'),
     'design-taste-frontend': ('前端设计品味', '设计或改造有质感的网站界面'),
     'design-taste-frontend-v1': ('前端设计品味·旧版', '需要与旧版设计方法兼容时使用'),
@@ -36,6 +37,7 @@ LABELS = {
     'redesign-existing-projects': ('现有项目改版', '检查并改善现有网站或应用的设计'),
     'scene-distillation-zine-v1-3': ('影像蒸馏', '把照片转化为有表现力的艺术插画海报'),
     'scenes-gathered-zine-v1-3': ('实景拼贴', '把真实照片做成纸张拼贴风格海报'),
+    'scrapling': ('自适应网页抓取', '抓取与解析网页，页面改版时重新定位内容'),
     'smart-charts': ('智能图表', '把表格数据做成交互式图表'),
     'stitch-design-taste': ('Stitch 设计规范', '为 Google Stitch 项目编写设计规范'),
     'video-use': ('视频剪辑', '按对话要求剪辑、调色和添加字幕'),
