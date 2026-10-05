@@ -66,15 +66,25 @@ def main():
     args = parser.parse_args()
     root = args.root
     found = {p.parent.name for p in root.glob('*/SKILL.md')}
-    if found != set(LABELS):
-        raise SystemExit(f'Skill set changed. Missing: {sorted(set(LABELS)-found)}; extra: {sorted(found-set(LABELS))}')
+    if not found:
+        raise SystemExit(f'No file-based skills found in {root}')
+    missing = set(LABELS) - found
+    extra = found - set(LABELS)
+    if missing:
+        print('Not installed here:', ', '.join(sorted(missing)))
+    if extra:
+        print('Unmapped skills:', ', '.join(sorted(extra)))
+    count = 0
     for slug, (title, description) in LABELS.items():
+        if slug not in found:
+            continue
         path = root / slug / 'agents' / 'openai.yaml'
         original = path.read_text(encoding='utf-8') if path.exists() else ''
         changed = updated_yaml(original, title, description)
         if changed == original:
             continue
         print(f'{slug} -> {title} | {description}')
+        count += 1
         if args.apply:
             path.parent.mkdir(exist_ok=True)
             if path.exists():
@@ -82,7 +92,7 @@ def main():
                 if not backup.exists():
                     backup.write_text(original, encoding='utf-8')
             path.write_text(changed, encoding='utf-8')
-    print('Applied' if args.apply else 'Preview only', len(LABELS), 'skills')
+    print('Applied' if args.apply else 'Preview only', count, 'skills')
 
 
 if __name__ == '__main__':
